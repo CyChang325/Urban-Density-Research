@@ -1,0 +1,159 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<title>Neighborhood</title>
+
+<link rel="stylesheet" href="Styles density2d.css">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- specific plugin -->
+<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+
+<!-- Create a div where the graph will take place -->
+
+<body>
+
+    <header class=grid-container-2-1>
+        <div class=title>City of Millenials</div>
+        <nav>
+            <ul id="main">
+              <a href="City of Millennials.html" ><li>Home</li></a>
+              <li><a href="Map Viewer.html" >Boston City</li></a>
+              <li><a href="Density2d Research.html" >Neighborhood</li></a>
+              <li>Case Study
+                <ul class="drop">
+                  <div>
+                      <a href="case study - Allston Brighton.html"><li>Allston / Brighton</li></a>
+                      <a href="Case study - South Boston.html" ><li>South Boston</li></a>
+                      <a href="Case study - Dorchester.html" ><li>Dorchester</li></a>
+                  </div>
+                </ul>
+              </li>
+              <div id="marker"></div>
+            </ul>
+          </nav>
+        </header>
+
+  <div class="grid-container-5">
+
+    <!-- Container where the graph is drawn. The ID need to be unqiue -->
+    <div class="grid-item" id="my_dataviz"><p class="note">Allston / Brighton</p></div>
+    <div class="grid-item" id="my_dataviz2"><p class="note">Fenway</p></div>
+    <div class="grid-item" id="my_dataviz3"><p class="note">Jamaica Plain / Mission Hill</p></div>
+
+    <div class="grid-item" id="my_dataviz4"><p class="note">Dorchester</p></div>
+    <div class="grid-item" id="my_dataviz5"><p class="note">South End</p></div>
+    <div class="grid-item" id="my_dataviz6"><p class="note">Back Bay / Beacon Hill</p></div>
+
+    <div class="grid-item" id="my_dataviz7"><p class="note">Downtown</p></div>
+    <div class="grid-item" id="my_dataviz8"><p class="note">Roxbury</p></div>
+    <div class="grid-item" id="my_dataviz9"><p class="note">South Boston</p></div>
+
+    <div class="grid-item" id="my_dataviz10"><p class="note">East Boston</p></div>
+    <div class="grid-item" id="my_dataviz11"><p class="note">Hyde Park</p></div>
+    <div class="grid-item" id="my_dataviz12"><p class="note">Mattapan</p></div>
+
+    <div class="grid-item" id="my_dataviz13"><p class="note">West Roxbury</p></div>
+    <div class="grid-item" id="my_dataviz14"><p class="note">Charlestown</p></div>
+    <div class="grid-item" id="my_dataviz15"><p class="note">Roslindale</p></div>
+
+  
+  </div>
+
+  <br><br><br>
+
+  <div class="divider-line"></div>
+
+  <div class=grid-container-2-3>
+      <p class=text3>The student population density alone does not represent the overall residential population density of the region, nor can it reflect the relationship between different types of population density. Therefore, we used the kernel density calculation method to pair the student residential population density and family household density of each neighborhood.  </p>
+      <p class=text3>This series of diagrams analysis can reflect whether the neighborhood is dominated by student population or family population. The darker the color, the more concentrated the number of plots in this density interval; otherwise, the fewer plots in this density interval.</p>
+    </div>
+  <div class="divider-line"></div>
+
+  <div class="grid-container-3">
+    <div><a href="case study - Allston Brighton.html"><img class=diagram src="images/Density2d Prototype-01.jpg" alt="prototype"></a><p class=annotation>TYPE 1</p></div>
+    <div><a href="Case study - South Boston.html"><img class=diagram src="images/Density2d Prototype-02.jpg" alt="prototype"></a><p class=annotation>TYPE 2</p></div>
+    <div><a href="Case study - Dorchester.html"><img class=diagram src="images/Density2d Prototype-03.jpg" alt="prototype"></a><p class=annotation>TYPE 3</p></div>
+  </div>
+
+  <div class="grid-container-3-1">
+
+      <p class=paragraph>In this type of community, a great number of students residential population density of  is more than 50%. What is special about Allston and Brighton is that it also contains a concentration of family household density is about 40%. This indicates that in addition to students, families are also one of the main living groups in this neighborhood.</p>
+      <p class=paragraph>The population density of students and family household in this type of community is concentrated at about 40%, indicating that no one group dominates the neighborhood. </p>
+      <p class=paragraph>The residential population density of students in this type of neighborhood is generally less than 20%, while the distribution of family household density varies greatly, ranging from 30% to 90%.This indicates that although the density of students in this community is relatively low, high-family household density blocks and high-non-family household density blocks exist simultaneously.</p>
+  
+    </div>
+
+  <!--Explore Button-->
+
+  <div class=explorebutton>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo"/>
+          </filter>
+        </defs>
+      </svg>
+      
+      <span class="button--bubble__container">
+        <a href="case study - Allston Brighton.html" class="button button--bubble">
+          Explore more
+        </a>
+        <span class="button--bubble__effect-container">
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+      
+          <span class="button effect-button"></span>
+      
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+        </span>
+      </span>
+  </div>
+
+  
+  <script src="Density2DScript.js"></script>
+
+  <script>
+
+    //Generate the Chart based on a CSV File and the id of the container
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Allston_Brighton_Density2d.csv", "#my_dataviz");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Fenway_Density2d.csv", "#my_dataviz2");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Jamaica%20Plain_Mission%20Hill_Density2d.csv", "#my_dataviz3");
+
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Dorchester2d.csv", "#my_dataviz4");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/South%20End2d.csv", "#my_dataviz5");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Back%20Bay_Beacon%20Hill%202d.csv", "#my_dataviz6");
+
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Downtown%202d.csv", "#my_dataviz7");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Roxbury2d.csv", "#my_dataviz8");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/South%20Boston%202d.csv", "#my_dataviz9");
+
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/East%20Boston.csv", "#my_dataviz10");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Hyde%20Park.csv", "#my_dataviz11");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Mattapan.csv", "#my_dataviz12");
+
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/West%20Roxbury_Density2d.csv", "#my_dataviz13");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Charlestown%202d.csv", "#my_dataviz14");
+    generate2dDensityChart("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/Roslindale.csv", "#my_dataviz15");
+
+  </script>
+
+  <!--Explore button script-->
+
+  <script src='CSSPlugin.min.js'></script>
+  <script src='EasePack.min.js'></script>
+  <script src='TweenLite.min.js'></script>
+  <script src='jquery.min.js'></script>
+  <script src='TimelineLite.min.js'></script>
+  <script src="script Explore Button.js"></script>
+
+
+</body>

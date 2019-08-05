@@ -1,30 +1,753 @@
+<head>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>  
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+</head>
+
 <style>
+
 body {
     background-color: rgb(233, 233, 233);
-    padding-top: 3%;
+    padding-top: 0%;
     padding-left: 15%;
     padding-right: 15%;
-    height: 1200;
+    height: 4000;
     
     }
-.diagram {
-    padding-top: 40px;
-    width: 100%;
+
+.picture {
+    position: relative;
+    padding-left: 9%;
 }
+
+.diagram {
+    padding-top: 20px;
+    width: 90%;
+    align-content: center;
+}
+
+.paragraph {
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 80px;
+    font-family:'Times New Roman', Times, serif;
+    line-height: 25px;
+    color: rgb(228, 95, 95);
+}
+
+.divider-line {
+    background-color: black;
+    width: 100%;
+    height: 1px;
+}
+
+.barchart {
+    position: relative;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 30px;
+    margin-left: 20px;
+    
+}
+
+.grid-container-2 {
+    position: relative;
+    margin-top: 5px;
+    margin-left: 30px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    font-family:'Times New Roman', Times, serif;
+	
+}
+
+.text1 {
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    width: 450px;
+    line-height: 25px;
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+    position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(105, 105, 105)
+  }
+
+/*Drop Menu style*/
+
+nav {
+  text-align: center;
+  color: rgb(66, 66, 66);
+
+}
+* {
+  box-sizing: border-box;
+}
+
+#main {
+  position: relative;
+  list-style: none;
+  background: rgb(224, 224, 224);
+  font-weight: 400;
+  font-size: 0;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0;
+  margin: 30px auto;
+}
+#main li {
+  font-size: 0.7rem;
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  cursor: pointer;
+  z-index: 5;
+  min-width: 115px;
+}
+
+li {
+  margin: 0;
+}
+
+.drop {
+  overflow: hidden;
+  list-style: none;
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  left: 0;
+  top: 48px;
+}
+.drop div {
+  -webkit-transform: translate(0, -100%);
+  -moz-transform: translate(0, -100%);
+  -ms-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+  -webkit-transition: all 0.5s 0.1s;
+  -moz-transition: all 0.5s 0.1s;
+  -ms-transition: all 0.5s 0.1s;
+  transition: all 0.5s 0.1s;
+  position: relative;
+}
+.drop li {
+  display: block;
+  padding: 0;
+  width: 100%;
+  background: rgb(224, 224, 224) !important;
+}
+
+#marker {
+  height: 6px;
+  background: rgb(243, 49, 75) !important;
+  position: absolute;
+  bottom: 0;
+  width: 119px;
+  z-index: 2;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  -ms-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+#main li:nth-child(1):hover ul div {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#main li:nth-child(1):hover ~ #marker {
+  -webkit-transform: translate(0px, 0);
+  -moz-transform: translate(0px, 0);
+  -ms-transform: translate(0px, 0);
+  transform: translate(0px, 0);
+}
+
+#main li:nth-child(2):hover ul div {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#main li:nth-child(2):hover ~ #marker {
+  -webkit-transform: translate(120px, 0);
+  -moz-transform: translate(120px, 0);
+  -ms-transform: translate(120px, 0);
+  transform: translate(120px, 0);
+}
+
+#main li:nth-child(3):hover ul div {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#main li:nth-child(3):hover ~ #marker {
+  -webkit-transform: translate(240px, 0);
+  -moz-transform: translate(240px, 0);
+  -ms-transform: translate(240px, 0);
+  transform: translate(240px, 0);
+}
+
+#main li:nth-child(4):hover ul div {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#main li:nth-child(4):hover ~ #marker {
+  -webkit-transform: translate(360px, 0);
+  -moz-transform: translate(360px, 0);
+  -ms-transform: translate(360px, 0);
+  transform: translate(360px, 0);
+}
+
+/*Drop Menu style*/
+
+/*Explore Button style*/
+
+.explorebutton {
+  display: block;
+  padding-top: 6%;
+  padding-left: 42%;
+  height: 30px;
+  -webkit-animation: hue-rotate 10s linear infinite;
+          animation: hue-rotate 10s linear infinite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.button {
+  -webkit-font-smoothing: antialiased;
+  background-color: #222;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  letter-spacing: 1px;
+  color: white;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-out;
+}
+.button:hover {
+  background-color: #90feb5;
+  color: #fff;
+}
+.button:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.button--bubble {
+  position: relative;
+  z-index: 2;
+  color: white;
+  background: none;
+}
+.button--bubble:hover {
+  background: none;
+}
+.button--bubble:hover + .button--bubble__effect-container .circle {
+  background: #44fd82;
+}
+.button--bubble:hover + .button--bubble__effect-container .button {
+  background: #44fd82;
+}
+.button--bubble:active + .button--bubble__effect-container {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.button--bubble__container {
+  position: relative;
+  display: inline-block;
+}
+.button--bubble__container .effect-button {
+  position: absolute;
+  width: 50%;
+  height: 25%;
+  top: 50%;
+  left: 25%;
+  z-index: 1;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+
+.button--bubble__effect-container {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  left: -50%;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+}
+.button--bubble__effect-container .circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  background: #222;
+  transition: background 0.1s ease-out;
+}
+.button--bubble__effect-container .circle.top-left {
+  top: 40%;
+  left: 27%;
+}
+.button--bubble__effect-container .circle.bottom-right {
+  bottom: 40%;
+  right: 27%;
+}
+
+.goo {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+
+.button--bubble__container {
+  top: 50%;
+  margin-top: -25px;
+}
+
+@-webkit-keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+/*Explore Button style*/
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: rgb(105, 105, 105);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(247, 220, 220, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #777777;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f14d4d;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
 
 .embed-container {position: relative; padding-bottom: 64%; height: 0; max-width: 100%;} 
 .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}
 </style>
 
 <body>
+
+  <nav>
+    <ul id="main">
+      <a href="City of Millennials.html" ><li>Home</li></a>
+      <li><a href="Map Viewer.html" >Boston City</li></a>
+      <li><a href="Density2d Research.html" >Neighborhood</li></a>
+      <li>Case Study
+        <ul class="drop">
+          <div>
+              <a href="case study - Allston Brighton.html"><li>Allston / Brighton</li></a>
+              <a href="Case study - South Boston.html" ><li>South Boston</li></a>
+              <a href="Case study - Dorchester.html" ><li>Dorchester</li></a>
+          </div>
+        </ul>
+      </li>
+      <div id="marker"></div>
+    </ul>
+  </nav>
+         
     
     <div class="embed-container">
     <iframe width="940" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="City of Millennial" src="//www.arcgis.com/apps/Embed/index.html?webmap=301ad099d619472c8e66aa32b9de0b52&extent=-71.3327,42.2015,-70.8298,42.4023&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&legendlayers=true&disable_scroll=false&theme=light">
     </iframe>
     </div>
 
-    <section>
-      <img class=diagram src="images/Density Alluvial.png"  alt="alluvial diagram">
+
+    <section class=paragraph>
+      <div class>
+          <p><a style="font-weight: bold; font-size: 22px; color: rgb(228, 95, 95); line-height: 20px"; >Student Off-campus Living Distribution</a><br><br><br>
+            To better understand students living distribution area and the difference in living population concentration, studying the population density of students at the urban scale is a necessary process. 
+          </p>
+      </div>
+      <div>
+          <p class>
+            This interactive map not only provides the distribution density of the student population in various areas of Boston, but also takes the student population density, family and non-family density in 2000 as the control group, so as to obtain a more direct understanding of the density changes of all kinds of factors in the past ten years. Also, by superimposing the current student population density with university and college campus distribution, commuter rail network, and other environmental factors, students' preference in renting can be roughly inferred.
+          </p>    
+      </div>
+
+      </section>
+
+
+    <div class="divider-line"></div>
+  
+    <!-- Add 2 buttons -->
+    <button class=barchart onclick="update('var1')">Student</button>
+    <button class=barchart onclick="update('var2')">Family Household</button>
+
+    <div class="grid-container-2">
+
+        <div id="my_dataviz"></div>
+
+        <div>
+                <p class=text1>
+                  Firstly, based on the census 2010 data, we counted the total number of students living in each community and the total number of families, respectively. The neighborhoods with the largest student population are Allston, Brighton; The Dorchester; Jamaica Plain, Mission Hill. The first three communities with the most significant number of families are Dorchester, Roxbury, Jamaica Plain, Mission Hill, but the population cannot directly reflect the specific population density and their living concentration of the area.
+                
+                <br><br>
+
+                *A = Allston / Brighton; B = Back Bay / Beacon Hill; C= Charlestown; D = Dorchester; E = Downtown
+                ; F = East Boston; G = Fenway; H = Hyde Park; I = Jamaica Plain / Mission Hill; J = Longwood
+                ; K = Mattapan; L = Roslindale; M = Roxbury; N = South Boston; O = South End; P = West Roxbury
+                
+                </p>    
+        </div>   
+
+    </div>
+
+    
+    <div class="divider-line"></div>
+
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 2</div>
+        <img src="images/Student Census Density 0.082.jpg" style="width:100%">
+        <div class="text">Student Residential Density Map</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 2</div>
+        <img src="images/Boston Stundent Intensity.jpg" style="width:100%">
+        <div class="text">Student Residential Population Map</div>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+    </div>
+
+    <section class=paragraph>
+            <div class>
+                <p>
+                  To calculate the population density of students more accurately, the census block used as the smallest counting unit, and the processed data were visualized to distinguish the differences of population density by gradient ramp. From the lightest yellow to the deepest blue represents the increase of student population density. If the blue area is more significant, it also represents the larger number of students in the area. 
+                </p>
+            </div>
+            <div>
+                <p class>
+                  Otherwise, if the color is lighter, the area is smaller, it represents the lower student population density in the area. By mapping, we found that the high-density student living areas are mostly found in Allston, Jamaica Plain, Fenway and South Boston, while Dorchester with a similar large number of students presents a low student living population density.
+                </p>    
+            </div>
+
     </section>
+
+    <div class="divider-line"></div>
+
+    <section class=picture>
+
+            <img class=diagram src="images/Density Alluvial.png"  alt="alluvial diagram">
+
+    </section>
+
+    <section class=paragraph>
+      <div class>
+          <p>
+          The flow diagram was used to integrate the data of community, density interval, and average rent price in the area for comparative analysis. Firstly, the result was consistent with mapping that the overall student population density in Allston area was higher than 25%, while Jamaica Plain also had a 1/3 area with a student population density greater than 25%, but the other 2/3 areas had lower population density. The density of student population in Dorchester is mainly concentrated at less than 25%, which indirectly proves that although the community has a relatively large number of students, its large land area, relatively scattered urban planning and lower living unit per house lead to a lower overall student population density than the other two areas with higher student population.
+          </p>
+      </div>
+      <div>
+          <p class>
+          By comparing the student population density intervals with the overall average rent intervals, the average rent in the 25%-52% student population density block is mainly between 2801-3668, which is much higher than that in the middle and low student population density census blocks. As students can invite more roommates to share the rent, the average rent in some areas will rise relatively. Every unit rented to students shrinks the pool of housing available to Boston's workforce and - the pressure on the supply of unsubsidized affordable middle - income housing.
+          </p>    
+      </div>
+
+    </section>
+
+    <!--Explore Button-->
+
+    <div class=explorebutton>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+              <feComposite in="SourceGraphic" in2="goo"/>
+            </filter>
+          </defs>
+        </svg>
+        
+        <span class="button--bubble__container">
+          <a href="Density2d Research.html" class="button button--bubble">
+            Explore more
+          </a>
+          <span class="button--bubble__effect-container">
+            <span class="circle top-left"></span>
+            <span class="circle top-left"></span>
+            <span class="circle top-left"></span>
+        
+            <span class="button effect-button"></span>
+        
+            <span class="circle bottom-right"></span>
+            <span class="circle bottom-right"></span>
+            <span class="circle bottom-right"></span>
+          </span>
+        </span>
+    </div>
+
+      
+  
+  <!--bar chart--> 
+  <script>
+
+            // set the dimensions and margins of the graph
+            var margin = {top: 50, right: 30, bottom: 70, left: 60},
+                width = 480 - margin.left - margin.right,
+                height = 430 - margin.top - margin.bottom;
+            
+            // append the svg object to the body of the page
+            var svg = d3.select("#my_dataviz")
+              .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform",
+                      "translate(" + margin.left + "," + margin.top + ")");
+            
+            // Initialize the X axis
+            var x = d3.scaleBand()
+              .range([ 0, width ])
+              .padding(0.2);
+            var xAxis = svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+            
+            // Initialize the Y axis
+            var y = d3.scaleLinear()
+              .range([ height, 0]);
+            var yAxis = svg.append("g")
+              .attr("class", "myYaxis")
+            
+            
+            // A function that create / update the plot for a given variable:
+            function update(selectedVar) {
+            
+              // Parse the Data
+              d3.csv("https://raw.githubusercontent.com/CyChang325/Urban-Density-Research/master/test.csv", function(data) {
+            
+                // X axis
+                x.domain(data.map(function(d) { return d.group; }))
+                xAxis.transition().duration(1000).call(d3.axisBottom(x))
+            
+                // Add Y axis
+                y.domain([0, d3.max(data, function(d) { return +d[selectedVar] }) ]);
+                yAxis.transition().duration(1000).call(d3.axisLeft(y));
+            
+                // variable u: map data to existing bars
+                var u = svg.selectAll("rect")
+                  .data(data)
+            
+                // update bars
+                u
+                  .enter()
+                  .append("rect")
+                  .merge(u)
+                  .transition()
+                  .duration(1000)
+                    .attr("x", function(d) { return x(d.group); })
+                    .attr("y", function(d) { return y(d[selectedVar]); })
+                    .attr("width", x.bandwidth())
+                    .attr("height", function(d) { return height - y(d[selectedVar]); })
+                    .attr("fill", "#ff547c")
+              })
+            
+            }
+            
+            // Initialize plot
+            update('var1')
+            
+    </script>
+
+<!--Explore button script-->
+
+    <script src='CSSPlugin.min.js'></script>
+    <script src='EasePack.min.js'></script>
+    <script src='TweenLite.min.js'></script>
+    <script src='jquery.min.js'></script>
+    <script src='TimelineLite.min.js'></script>
+    <script src="script Explore Button.js"></script>
+
+<script>
+  var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block"; 
+  dots[slideIndex-1].className += " active";
+}
+</script>    
+
+
 
 </body>
